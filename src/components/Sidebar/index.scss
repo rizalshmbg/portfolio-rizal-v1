@@ -17,8 +17,12 @@
       width: 24px;
       height: auto;
 
+      &.logo-rs {
+        width: 90%;
+      }
+
       &.sub-logo {
-        width: 50px;
+        width: 100%;
       }
     }
   }
