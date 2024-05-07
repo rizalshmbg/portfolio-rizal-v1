@@ -1,12 +1,34 @@
+import emailjs from '@emailjs/browser'
+import { useEffect, useRef, useState } from 'react'
 import Loader from 'react-loaders'
-import './index.scss'
 import AnimatedLetters from '../AnimatedLetters'
-import { useEffect, useState } from 'react'
+import './index.scss'
 
 const contactNameArray = ['C', 'o', 'n', 't', 'a', 'c', 't', ' ', 'M', 'e']
 
 const Contact = () => {
 	const [letterClass, setLetterClass] = useState('text-animate')
+	const refForm = useRef()
+
+	const handleSendEmail = (e) => {
+		e.preventDefault()
+
+		try {
+			emailjs.sendForm(
+				`${import.meta.env.VITE_EMAILJS_SERVICE_ID}`,
+				`${import.meta.env.VITE_EMAILJS_TEMPLATE_ID}`,
+				refForm.current,
+				{
+					publicKey: `${import.meta.env.VITE_EMAILJS_PUBLIC_KEY}`,
+				}
+			)
+			alert('Message successfully sent!')
+			window.location.reload(false)
+		} catch (error) {
+			alert('Failed to send the message, please try again')
+			console.log(error)
+		}
+	}
 
 	useEffect(() => {
 		setTimeout(() => {
@@ -31,7 +53,7 @@ const Contact = () => {
 						questions, don&#39;t hesitate to contact me using below form either.
 					</p>
 					<div className='contact-form'>
-						<form>
+						<form ref={refForm} onSubmit={handleSendEmail}>
 							<ul>
 								<li className='half'>
 									<input
