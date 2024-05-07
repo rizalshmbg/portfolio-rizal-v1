@@ -3,8 +3,10 @@ import { useEffect, useRef, useState } from 'react'
 import Loader from 'react-loaders'
 import AnimatedLetters from '../AnimatedLetters'
 import './index.scss'
+import { MapContainer, TileLayer } from 'react-leaflet'
 
 const contactNameArray = ['C', 'o', 'n', 't', 'a', 'c', 't', ' ', 'M', 'e']
+const position = [-6.9147444, 107.6098111]
 
 const Contact = () => {
 	const [letterClass, setLetterClass] = useState('text-animate')
@@ -96,6 +98,18 @@ const Contact = () => {
 							</ul>
 						</form>
 					</div>
+				</div>
+				<div className='info-map'>
+					Rizal Sihombing,
+					<br />
+					Bandung, West Java, Indonesia.
+					<br />
+					<span>sihombingrizal18@gmail.com</span>
+				</div>
+				<div className='map-wrap'>
+					<MapContainer center={position} zoom={13}>
+						<TileLayer url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' />
+					</MapContainer>
 				</div>
 			</div>
 			<Loader type='pacman' />
