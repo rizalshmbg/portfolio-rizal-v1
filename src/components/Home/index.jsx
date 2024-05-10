@@ -9,28 +9,18 @@ import Loader from 'react-loaders'
 
 const Home = () => {
 	const [letterClass, setLetterClass] = useState('text-animate')
-	const firstNameArray = ['i', 'z', 'a', 'l']
-	const lastNameArray = ['i', 'h', 'o', 'm', 'b', 'i', 'n', 'g']
-	const jobArray = [
-		'W',
-		'e',
-		'b',
-		' ',
-		'D',
-		'e',
-		'v',
-		'e',
-		'l',
-		'o',
-		'p',
-		'e',
-		'r',
-	]
+	const firstNameArray = 'izal'
+	const lastNameArray = 'ihombing'
+	const jobArray = 'Web Developer'
 
 	useEffect(() => {
-		setTimeout(() => {
+		const timer = setTimeout(() => {
 			setLetterClass('text-animate-hover')
 		}, 4000)
+
+		return () => {
+			clearTimeout(timer)
+		}
 	}, [])
 
 	return (
@@ -49,20 +39,20 @@ const Home = () => {
 						<img src={LogoR} alt='Logo-R' className='logo-R' />
 						<AnimatedLetters
 							letterClass={letterClass}
-							strArray={firstNameArray}
+							strArray={firstNameArray.split('')}
 							idx={17}
 						/>
 						{/* LOGO S */}
 						<img src={LogoS} alt='Logo-S' className='logo-S' />
 						<AnimatedLetters
 							letterClass={letterClass}
-							strArray={lastNameArray}
+							strArray={lastNameArray.split('')}
 							idx={21}
 						/>
 						<br />
 						<AnimatedLetters
 							letterClass={letterClass}
-							strArray={jobArray}
+							strArray={jobArray.split('')}
 							idx={27}
 						/>
 					</h1>

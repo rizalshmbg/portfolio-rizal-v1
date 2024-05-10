@@ -5,7 +5,7 @@ import AnimatedLetters from '../AnimatedLetters'
 import './index.scss'
 import { MapContainer, TileLayer } from 'react-leaflet'
 
-const contactNameArray = ['C', 'o', 'n', 't', 'a', 'c', 't', ' ', 'M', 'e']
+const contactNameArray = 'Contact'
 const position = [-6.9147444, 107.6098111]
 
 const Contact = () => {
@@ -33,9 +33,13 @@ const Contact = () => {
 	}
 
 	useEffect(() => {
-		setTimeout(() => {
+		const timer = setTimeout(() => {
 			setLetterClass('text-animate-hover')
 		}, 3000)
+
+		return () => {
+			clearTimeout(timer)
+		}
 	}, [])
 
 	return (
@@ -44,7 +48,7 @@ const Contact = () => {
 				<div className='text-zone'>
 					<h1>
 						<AnimatedLetters
-							strArray={contactNameArray}
+							strArray={contactNameArray.split('')}
 							letterClass={letterClass}
 							idx={15}
 						/>

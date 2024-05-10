@@ -12,15 +12,19 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import Loader from 'react-loaders'
 
-const aboutNameArray = ['A', 'b', 'o', 'u', 't', ' ', 'M', 'e']
+const aboutNameArray = 'About Me'
 
 const About = () => {
 	const [letterClass, setLetterClass] = useState('text-animate')
 
 	useEffect(() => {
-		setTimeout(() => {
+		const timer = setTimeout(() => {
 			setLetterClass('text-animate-hover')
 		}, 3000)
+
+		return () => {
+			clearTimeout(timer)
+		}
 	}, [])
 
 	return (
@@ -29,7 +33,7 @@ const About = () => {
 				<div className='text-zone'>
 					<h1>
 						<AnimatedLetters
-							strArray={aboutNameArray}
+							strArray={aboutNameArray.split('')}
 							letterClass={letterClass}
 							idx={15}
 						/>
