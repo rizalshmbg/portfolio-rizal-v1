@@ -2,12 +2,42 @@ import './index.scss'
 import Loader from 'react-loaders'
 import AnimatedLetters from '../AnimatedLetters'
 import { useEffect, useState } from 'react'
-import portfolioData from '../../data/portfolio.json'
+import { getDocs, collection } from 'firebase/firestore'
+import { db } from '../../firebase'
 
 const portfolioNameArray = 'Portfolio'
 
 const Portfolio = () => {
 	const [letterClass, setLetterClass] = useState('text-animate')
+	const [portfolio, setPortfolio] = useState([])
+
+	const getPortfolio = async () => {
+		const querySnapshot = await getDocs(collection(db, 'portfolio'))
+		setPortfolio(querySnapshot.docs.map((doc) => doc.data()))
+	}
+
+	const renderPortfolio = (portfolio) => {
+		return (
+			<div className='images-container'>
+				{portfolio.map((project, i) => {
+					const { image, title, desc, url } = project
+
+					return (
+						<div key={i} className='image-box'>
+							<img src={image} alt={title} className='portfolio-image' />
+							<div className='content'>
+								<p className='title'>{title}</p>
+								<h4 className='description'>{desc}</h4>
+								<button className='btn-view' onClick={() => window.open(url)}>
+									View
+								</button>
+							</div>
+						</div>
+					)
+				})}
+			</div>
+		)
+	}
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
@@ -19,31 +49,9 @@ const Portfolio = () => {
 		}
 	}, [])
 
-	const renderPortfolio = (portfolio) => {
-		return (
-			<div className='images-container'>
-				{portfolio.map((project, i) => {
-					const { img, title, desc, url } = project
-
-					return (
-						<div key={i} className='image-box'>
-							<img src={img} alt={title} className='portfolio-image' />
-							<div className='content'>
-								<p className='title'>{title}</p>
-								<h4 className='description'>{desc}</h4>
-								<button className='btn-view' onClick={() => window.open(url)}>
-									View
-								</button>
-								{/* <a href={url} target='_blank'>
-									View
-								</a> */}
-							</div>
-						</div>
-					)
-				})}
-			</div>
-		)
-	}
+	useEffect(() => {
+		getPortfolio()
+	}, [])
 
 	return (
 		<>
@@ -55,7 +63,7 @@ const Portfolio = () => {
 						strArray={portfolioNameArray.split('')}
 					/>
 				</h1>
-				<div>{renderPortfolio(portfolioData.portfolio)}</div>
+				<div>{renderPortfolio(portfolio)}</div>
 			</div>
 			<Loader type='pacman' />
 		</>
