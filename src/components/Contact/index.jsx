@@ -12,11 +12,11 @@ const Contact = () => {
 	const [letterClass, setLetterClass] = useState('text-animate')
 	const refForm = useRef()
 
-	const handleSendEmail = (e) => {
+	const handleSendEmail = async (e) => {
 		e.preventDefault()
 
 		try {
-			emailjs.sendForm(
+			await emailjs.sendForm(
 				`${import.meta.env.VITE_EMAILJS_SERVICE_ID}`,
 				`${import.meta.env.VITE_EMAILJS_TEMPLATE_ID}`,
 				refForm.current,
