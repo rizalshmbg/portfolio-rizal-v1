@@ -47,22 +47,12 @@
 
     .logo-R {
       animation: backInDown 1s linear both;
-      animation-delay: 1.1s;
-
-      &:hover {
-        animation: hinge 1.5s;
-        cursor: progress;
-      }
+      animation-delay: 1s;
     }
 
     .logo-S {
       animation: backInDown 1s linear both;
-      animation-delay: 1.4s;
-
-      &:hover {
-        animation: hinge 1.5s;
-        cursor: progress;
-      }
+      animation-delay: 1.45s;
     }
   }
 

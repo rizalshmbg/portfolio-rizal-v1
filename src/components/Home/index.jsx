@@ -11,7 +11,7 @@ const Home = () => {
 	const [letterClass, setLetterClass] = useState('text-animate')
 	const firstNameArray = 'izal'
 	const lastNameArray = 'ihombing,'
-	const jobArray = 'Jr. Web Developer.'
+	const jobArray = 'Jr Web Developer.'
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
