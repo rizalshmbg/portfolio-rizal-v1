@@ -10,8 +10,8 @@ import Loader from 'react-loaders'
 const Home = () => {
 	const [letterClass, setLetterClass] = useState('text-animate')
 	const firstNameArray = 'izal'
-	const lastNameArray = 'ihombing'
-	const jobArray = 'Web Developer'
+	const lastNameArray = 'ihombing,'
+	const jobArray = 'Jr. Web Developer.'
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
@@ -30,11 +30,12 @@ const Home = () => {
 					<h1>
 						<span className={letterClass}>H</span>
 						<span className={`${letterClass} _12`}>i</span>
-						<span className={`${letterClass} _13`}>,</span>
+						<span className={`${letterClass} _13`}>!</span>
 						<br />
 						<span className={`${letterClass} _14`}>I</span>
 						<span className={`${letterClass} _15`}>&#39;</span>
 						<span className={`${letterClass} _16`}>m</span>
+
 						{/* LOGO R */}
 						<img src={LogoR} alt='Logo-R' className='logo-R' />
 						<AnimatedLetters
@@ -42,6 +43,7 @@ const Home = () => {
 							strArray={firstNameArray.split('')}
 							idx={17}
 						/>
+
 						{/* LOGO S */}
 						<img src={LogoS} alt='Logo-S' className='logo-S' />
 						<AnimatedLetters
@@ -49,11 +51,12 @@ const Home = () => {
 							strArray={lastNameArray.split('')}
 							idx={21}
 						/>
+
 						<br />
 						<AnimatedLetters
 							letterClass={letterClass}
 							strArray={jobArray.split('')}
-							idx={27}
+							idx={23}
 						/>
 					</h1>
 					<h2>Fresh Graduate of BCS / Jr. Frontend Web Developer</h2>
