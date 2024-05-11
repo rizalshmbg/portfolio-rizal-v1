@@ -1,0 +1,19 @@
+.home-dashboard {
+  margin-top: 200px;
+  margin-left: 200px;
+
+  form input {
+    display: block;
+    margin: 10px 0px;
+
+    &.img {
+      color: #fff;
+    }
+  }
+
+  textarea.desc {
+    width: 170px;
+    height: 40px;
+    resize: none;
+  }
+}
