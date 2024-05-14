@@ -7,7 +7,7 @@
   overflow: auto;
 
   h1.page-title {
-    margin-left: 50px;
+    margin-left: 100px;
     margin-top: 100px;
   }
 
@@ -16,7 +16,7 @@
     gap: 15px;
     flex-wrap: wrap;
     padding-bottom: 100px;
-    margin-left: 100px;
+    // margin-left: 100px;
   }
 
   .image-box {
@@ -105,6 +105,24 @@
     &:hover .content {
       bottom: 0;
       background: transparent;
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .container.portfolio-page {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+
+    h1.page-title {
+      margin-left: 0;
+      margin-top: 20px;
+    }
+
+    .image-box {
+      height: 200px;
+      max-width: calc(50% - 10px);
     }
   }
 }
