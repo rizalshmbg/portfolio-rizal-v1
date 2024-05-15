@@ -10,28 +10,46 @@
   left: auto;
   margin: auto;
 
-  svg {
-    width: 100%;
+  svg.svg-logo-r {
+    width: 70%;
     height: auto;
-    bottom: 0;
-    transform: rotateZ(30deg) !important;
+    margin-top: 25px;
+    margin-left: -30px;
   }
 
-  .solid-logo {
+  svg.svg-logo-s {
+    width: 70%;
+    height: auto;
+    margin-top: -500px;
+    margin-left: 250px;
+  }
+
+  .solid-logo-r {
     position: absolute;
-    top: auto;
+    top: 25px;
     right: auto;
     bottom: auto;
-    left: 0;
+    left: -30px;
     margin: auto;
-    width: 100%;
+    width: 70%;
     opacity: 0;
-    transform: rotateZ(30deg) !important;
+    z-index: 1;
+  }
+
+  .solid-logo-s {
+    position: absolute;
+    top: 40px;
+    right: auto;
+    bottom: auto;
+    left: 250px;
+    margin: auto;
+    width: 70%;
+    opacity: 0;
     z-index: 1;
   }
 }
 
 .svg-container {
   stroke: #ffd700;
-  stroke-width: 10;
+  stroke-width: 20;
 }
